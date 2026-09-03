@@ -1,3 +1,11 @@
+import { RegisterForm } from "@/features/auth/register/ui/RegisterForm";
+
+import styles from './RegisterPage.module.css'
+
 export function RegisterPage() {
-  return <main>Страница регистрации.</main>;
+  return (
+    <main className={styles.main}>
+      <RegisterForm></RegisterForm>
+    </main>
+  );
 }
