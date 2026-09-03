@@ -1,4 +1,30 @@
-* {
+:root {
+  --color-background: #f5f2ee;
+  --color-surface: #fffcf8;
+  --color-text: #43383e;
+  --color-primary: #96506c;
+  --color-secondary: #fff1d7;
+  --color-border: #ded3d0;
+  --color-danger: #b94f63;
+
+  --color-pink: #f3bdd1;
+  --color-blue: #c5e2f3;
+  --color-lilac: #dcccef;
+  --color-mint: #d2e8db;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
-  padding: 0;
+}
+
+body {
+  color: var(--color-text);
+  background: var(--color-background);
+  font-family: sans-serif;
 }
