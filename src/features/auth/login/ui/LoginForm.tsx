@@ -2,6 +2,7 @@ import { Input } from "@/shared/ui/Input/Input";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { FormField } from "@/shared/ui/FormField/FormField";
 import styles from "@/features/auth/ui/AuthForm.module.css";
+import { Button } from "@/shared/ui";
 
 type Inputs = {
   email: string;
@@ -46,14 +47,14 @@ export function LoginForm() {
           id="password"
           type="password"
           autoComplete="current-password"
-          placeholder="1234Qwert_"
+          placeholder="********"
           {...register("password", {
             required: "Введите пароль",
           })}
         />
       </FormField>
 
-      <button type="submit">Войти</button>
+      <Button type="submit">Войти</Button>
     </form>
   );
 }

@@ -9,13 +9,40 @@
   border-radius: var(--radius-md);
 }
 
-.input:focus-visible,
-.input:focus {
+.input:focus,
+.input:focus-visible {
   outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 
-  box-shadow: 0 0 0 3px rgb(80 136 38 / 20%);
+  box-shadow:
+    0 0 0 3px rgb(from var(--color-primary) r g b / 20%);
 }
 
 .input[aria-invalid="true"] {
   outline-color: var(--color-danger);
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover {
+  -webkit-text-fill-color: var(--color-text);
+  caret-color: var(--color-text);
+
+  -webkit-box-shadow:
+    0 0 0 1000px var(--color-surface) inset;
+  box-shadow:
+    0 0 0 1000px var(--color-surface) inset;
+}
+
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:focus-visible {
+  -webkit-text-fill-color: var(--color-text);
+  caret-color: var(--color-text);
+
+  -webkit-box-shadow:
+    0 0 0 1000px var(--color-surface) inset,
+    0 0 0 3px rgb(from var(--color-primary) r g b / 20%);
+
+  box-shadow:
+    0 0 0 1000px var(--color-surface) inset,
+    0 0 0 3px rgb(from var(--color-primary) r g b / 20%);
 }

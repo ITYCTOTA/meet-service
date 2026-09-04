@@ -1,19 +1,32 @@
 :root {
-  --color-background: #f5f2ee;
-  --color-surface: #fffcf8;
-  --color-text: #43383e;
-  --color-primary: #96506c;
-  --color-secondary: #fff1d7;
-  --color-border: #ded3d0;
-  --color-danger: #b94f63;
+  color-scheme: light dark;
 
-  --color-pink: #f3bdd1;
-  --color-blue: #c5e2f3;
-  --color-lilac: #dcccef;
-  --color-mint: #d2e8db;
+  /* Основные поверхности */
+  --color-background: light-dark(#f5f2ee, #1f191b);
+  --color-surface: light-dark(#fffcf8, #2a2225);
+  --color-secondary: light-dark(#fff1d7, #392d30);
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
+  /* Текст */
+  --color-text: light-dark(#43383e, #f5efec);
+  --color-text-muted: light-dark(#766970, #bcaeb1);
+
+  /* Основной акцент */
+  --color-primary: light-dark(#96506c, #9fd8bd);
+  --color-on-primary: light-dark(#fffcf8, #21191c);
+  --color-primary-hover: light-dark(#7f405a, #b4e4cc);
+
+  /* Границы и состояния */
+  --color-border: light-dark(#ded3d0, #604c51);
+  --color-danger: light-dark(#b94f63, #f08b9e);
+
+  /* Декоративные цвета */
+  --color-pink: light-dark(#f3bdd1, #d89cb5);
+  --color-blue: light-dark(#c5e2f3, #8fbccd);
+  --color-lilac: light-dark(#dcccef, #b6a2ce);
+  --color-mint: light-dark(#d2e8db, #9fd8bd);
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
 }
 
 *,
