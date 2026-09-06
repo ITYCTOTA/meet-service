@@ -3,23 +3,39 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { FormField } from "@/shared/ui/FormField/FormField";
 import styles from "@/features/auth/ui/AuthForm.module.css";
 import { Button } from "@/shared/ui";
+import type { LoginCredentials } from "../../model/types";
+import { login } from "../../api/authApi";
 
-type Inputs = {
-  email: string;
-  password: string;
-};
+import { useDispatch } from "react-redux";
+import { sessionReceived } from "@/entities/session/model/sessionSlice";
+import type { AppDispatch } from "@/store";
 
 export function LoginForm() {
+  const dispatch = useDispatch<AppDispatch>();
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>({
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginCredentials>({
     defaultValues: {
       email: "",
+      password: "",
     },
   });
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
+  const onSubmit: SubmitHandler<LoginCredentials> = async (credentials) => {
+    try {
+      const { user } = await login(credentials);
+
+      dispatch(sessionReceived(user));
+    } catch {
+      setError("root", {
+        message: "Не удалось войти. Проверьте данные или попробуйте позже.",
+      });
+    }
+  };
 
   return (
     <form className={styles.authForm} onSubmit={handleSubmit(onSubmit)}>
@@ -54,7 +70,10 @@ export function LoginForm() {
         />
       </FormField>
 
-      <Button type="submit">Войти</Button>
+      {errors.root?.message && <p role="alert">{errors.root.message}</p>}
+      <Button type="submit" loading={isSubmitting}>
+        Войти
+      </Button>
     </form>
   );
 }
