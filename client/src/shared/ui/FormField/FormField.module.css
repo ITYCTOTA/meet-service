@@ -1,0 +1,10 @@
+.label {
+  display: block;
+  font-size: 16px;
+  margin-block-end: 8px;
+}
+
+.error {
+  color: var(--color-danger);
+  margin-block-start: 4px;
+}

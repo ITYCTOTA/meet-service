@@ -1,0 +1,13 @@
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  background-color: var(--color-secondary);
+  
+  border: solid 1px var(--color-border);
+  border-radius: var(--radius-md);
+
+  width: 600px;
+  padding: 16px;
+}
