@@ -3,8 +3,9 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { FormField } from "@/shared/ui/FormField/FormField";
 import styles from "@/features/auth/ui/AuthForm.module.css";
 import { Button } from "@/shared/ui";
+import { registerUser } from "@/entities/user/api/userApi";
 
-type Inputs = {
+export type RegisterCredentials = {
   name: string;
   surname: string;
   email: string;
@@ -16,12 +17,20 @@ export function RegisterForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>({
+  } = useForm<RegisterCredentials>({
     defaultValues: {
       email: "",
     },
   });
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
+  const onSubmit: SubmitHandler<RegisterCredentials> = async (data) => {
+    try {
+      const user = await registerUser(data);
+      console.log(user);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <form className={styles.authForm} onSubmit={handleSubmit(onSubmit)}>
